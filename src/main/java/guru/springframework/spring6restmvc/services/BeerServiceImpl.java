@@ -22,6 +22,8 @@ public class BeerServiceImpl implements BeerService {
     public BeerServiceImpl() {
         this.beerMap = new HashMap<>();
 
+        beerMap.put(UUID.fromString("dbfa4ce0-c836-4522-aa0c-3b0db1675b11"), null);
+
         Beer beer1 = Beer.builder()
                 .id(UUID.randomUUID())
                 .version(1)
@@ -112,7 +114,7 @@ public class BeerServiceImpl implements BeerService {
 
         log.debug("Get Beer by Id - in service. Id: " + id.toString());
 
-        return Optional.of(beerMap.get(id));
+        return Optional.ofNullable(beerMap.get(id));
     }
 
     @Override
